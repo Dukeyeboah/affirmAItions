@@ -1,4 +1,4 @@
-import { process } from '/env'
+
 import { Configuration, OpenAIApi } from 'openai'
 import {categoryArr} from './data'
 
