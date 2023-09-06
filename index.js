@@ -45,10 +45,11 @@ async function fetchBotReply(outline) {
        is exciting and that you need a few seconds to think about it.
        ###
       outline: "Finance & Wealth"
-      message: Lovely choice, I must say! Everyone loves to be wealthy! One second while I create your affirmation.
+      message: Finance and Wealth is a splendid choice, I must say! 
+      Everyone loves to be wealthy! One second while I create your affirmation.
       ###
       outline: "Relationships & Love"
-      message: I love It! No pun intented. What are we without love and wonderful relationships!
+      message: I love it! No pun intented. What are we without love and wonderful relationships!
       ###
       outline: ${outline}
       message:
@@ -59,8 +60,8 @@ async function fetchBotReply(outline) {
   const response = await fetch(url, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
-      // 'content-type': 'text/plain',
+      // 'Content-Type': 'application/json'
+      'content-type': 'text/plain'
     },
     body: requestBody
     
