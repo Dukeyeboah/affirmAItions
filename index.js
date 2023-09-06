@@ -39,25 +39,29 @@ document.getElementById("affirmation-form").addEventListener("submit", (event) =
 
 async function fetchBotReply(outline) {
   const url = 'https://affirmaition.netlify.app/.netlify/functions/fetchAI'
+   
+  const requestBody = JSON.stringify({
+    prompt: `Generate a short message to enthusiastically say the chosen outline 
+      is exciting and that you need a few seconds to think about it.
+      ###
+      outline: "Finance & Wealth"
+      message: Lovely choice, I must say! Everyone loves to be wealthy! One second while I create your affirmation.
+      ###
+      outline: "Relationships & Love"
+      message: I love It! No pun intended. What are we without love and wonderful relationships!
+      ###
+      outline: ${outline}
+      message:
+    `,
+    tokens: 60
+  });
     
   const response = await fetch(url, {
     method: 'POST',
     headers: {
       'content-type': 'text/plain',
     },
-    body:{prompt:`Generate a short message to enthusiastically say the chosen outline 
-       is exciting and that you need a few seconds to think about it.
-       ###
-      outline: "Finance & Wealth"
-      message: Lovely choice, I must say! Everyone loves to be wealthy! One second while I create your affirmation.
-      ###
-      outline: "Relationships & Love"
-      message: I love It! No pun intented. What are we without love and wonderful relationships!
-      ###
-      outline: ${outline}
-      message:
-      `,
-    tokens: 60}
+    body:requestBody
   })
   const data = await response.json()
   console.log(data.reply)
