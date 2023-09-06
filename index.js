@@ -29,13 +29,12 @@ document.getElementById("affirmation-form").addEventListener("submit", (event) =
     setupInputContainer.innerHTML = `<img src="images/loading.svg" class="loading" id="loading">`
     affirmBotText.innerText = `Thank you for choosing a category, please wait a second while my AI brain digests your choice...` 
     fetchBotReply(selectedCategory)
-    fetchAffirmation(selectedCategory)
+    // fetchAffirmation(selectedCategory)
   }
   else {
     affirmBotText.innerText = `Please Select a category, so I can help you manifest your desires with the right affirmation`
   }
 })
-
 
 
 async function fetchBotReply(outline) {
@@ -61,7 +60,9 @@ async function fetchBotReply(outline) {
     max_tokens:60}
   })
   const data = await response.json()
+  setupInputContainer.innerText = data.reply
   affirmBotText.innerText = data.reply.choices[0].text.trim()
+  
   // affirmBotText.innerText = response.data.choices[0].text.trim()
 
   // affirmBotText.innerText = response.data.choices[0].text.trim()
@@ -70,34 +71,34 @@ async function fetchBotReply(outline) {
 // renderTypewriterText(response.data.choices[0].text)
 }
 
-async function fetchAffirmation(outline) {
-  const url = 'https://affirmaition.netlify.app/.netlify/functions/fetchAI'
+// async function fetchAffirmation(outline) {
+//   const url = 'https://affirmaition.netlify.app/.netlify/functions/fetchAI'
 
-  const response = await fetch(url, {
-    method: 'POST',
-    headers: {
-      'content-type': 'text/plain',
-    },
-    body: {prompt:`Generate a clear, concise, enthusiastic, emotional and powerful 
-    affirmation in the present tense based on an outline
-    ###
-    outline: "Finance & Wealth"
-    affirmation: "I am infinitely wealthy without limit. Avalanches of money flow in me in abundance"
-    ###
-    outline: "Self-confidence & Empowerment"
-    affirmation: "I am One with the infinite Source of all Creation, called God. 
-    The limitless power that creates universes flows through me always. Nothing is impossible for me to achieve."
-    ###
-    outline: ${outline}
-    affirmation:
-    `,
-    max_tokens:120}
-  })
-  const data = await response.json()
-  const affirmation = data.reply.choices[0].text.trim()
-  document.getElementById('output-text').innerText = affirmation
-  // fetchTitle(affirmation)
-}
+//   const response = await fetch(url, {
+//     method: 'POST',
+//     headers: {
+//       'content-type': 'text/plain',
+//     },
+//     body: {prompt:`Generate a clear, concise, enthusiastic, emotional and powerful 
+//     affirmation in the present tense based on an outline
+//     ###
+//     outline: "Finance & Wealth"
+//     affirmation: "I am infinitely wealthy without limit. Avalanches of money flow in me in abundance"
+//     ###
+//     outline: "Self-confidence & Empowerment"
+//     affirmation: "I am One with the infinite Source of all Creation, called God. 
+//     The limitless power that creates universes flows through me always. Nothing is impossible for me to achieve."
+//     ###
+//     outline: ${outline}
+//     affirmation:
+//     `,
+//     max_tokens:120}
+//   })
+//   const data = await response.json()
+//   const affirmation = data.reply.choices[0].text.trim()
+//   document.getElementById('output-text').innerText = affirmation
+//   // fetchTitle(affirmation)
+// }
 
 
 
