@@ -8,14 +8,14 @@ const openai = new OpenAIApi(configuration)
 // Parse the JSON string from event.body to an object
 const handler = async (event) => {
     
-  const requestBody = JSON.parse(event.body);
-  const { prompt_given, tokens } = requestBody; // Extract prompt and tokens
+  // const requestBody = JSON.parse(event.body);
+  // const { prompt_given, tokens } = requestBody; // Extract prompt and tokens
 
   try {
     const response = await openai.createCompletion({
     model: 'text-davinci-003',
-    prompt:prompt_given,
-    max_tokens: tokens //defaults to 16
+    prompt:event.body,
+    max_tokens: 120 //defaults to 16
   })
 
     return {

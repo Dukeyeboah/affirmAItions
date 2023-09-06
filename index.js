@@ -111,7 +111,19 @@ async function fetchAffirmation(outline) {
     headers: {
       'Content-Type': 'application/json'
     },
-    body:requestBody
+    body:`Generate a clear, concise, enthusiastic, emotional and powerful 
+    affirmation in the present tense based on an outline
+    ###
+    outline: "Finance & Wealth"
+    affirmation: "I am infinitely wealthy without limit. Avalanches of money flow in me in abundance"
+    ###
+    outline: "Self-confidence & Empowerment"
+    affirmation: "I am One with the infinite Source of all Creation, called God. 
+    The limitless power that creates universes flows through me always. Nothing is impossible for me to achieve."
+    ###
+    outline: ${outline}
+    affirmation:
+    `
   })
   const data = await response.json()
   const affirmation = data.reply.choices[0].text.trim()
