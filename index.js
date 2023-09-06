@@ -89,29 +89,8 @@ async function fetchAffirmation(outline) {
 
   const url = 'https://affirmaition.netlify.app/.netlify/functions/fetchAI'
 
-  // const requestBody = JSON.stringify({
-  //   prompt: `Generate a clear, concise, enthusiastic, emotional and powerful 
-  //   affirmation in the present tense based on an outline
-  //   ###
-  //   outline: "Finance & Wealth"
-  //   affirmation: "I am infinitely wealthy without limit. Avalanches of money flow in me in abundance"
-  //   ###
-  //   outline: "Self-confidence & Empowerment"
-  //   affirmation: "I am One with the infinite Source of all Creation, called God. 
-  //   The limitless power that creates universes flows through me always. Nothing is impossible for me to achieve."
-  //   ###
-  //   outline: ${outline}
-  //   affirmation:
-  //   `,
-  //   tokens: 120 // Pass maxTokens
-  // });
-
-  const response = await fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'text/plain'
-    },
-    body:`Generate a clear, concise, enthusiastic, emotional and powerful 
+  const requestBody = JSON.stringify({
+    prompt_given: `Generate a clear, concise, enthusiastic, emotional and powerful 
     affirmation in the present tense based on an outline
     ###
     outline: "Finance & Wealth"
@@ -123,7 +102,16 @@ async function fetchAffirmation(outline) {
     ###
     outline: ${outline}
     affirmation:
-    `
+    `,
+    tokens: 120 // Pass maxTokens
+  });
+
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'text/plain'
+    },
+    body:requestBody
   })
   const data = await response.json()
   console.log(data.reply.choices[0])
