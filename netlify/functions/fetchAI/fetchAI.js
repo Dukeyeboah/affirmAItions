@@ -9,12 +9,12 @@ const openai = new OpenAIApi(configuration)
 const handler = async (event) => {
     
   const requestBody = JSON.parse(event.body);
-  const { prompt, tokens } = requestBody; // Extract prompt and tokens
+  const { prompt_given, tokens } = requestBody; // Extract prompt and tokens
 
   try {
     const response = await openai.createCompletion({
     model: 'text-davinci-003',
-    prompt:prompt,
+    prompt:prompt_given,
     max_tokens: tokens //defaults to 16
   })
 
