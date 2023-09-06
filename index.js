@@ -39,34 +39,49 @@ document.getElementById("affirmation-form").addEventListener("submit", (event) =
 
 async function fetchBotReply(outline) {
   const url = 'https://affirmaition.netlify.app/.netlify/functions/fetchAI'
-   
+
   const requestBody = JSON.stringify({
     prompt: `Generate a short message to enthusiastically say the chosen outline 
-      is exciting and that you need a few seconds to think about it.
-      ###
+       is exciting and that you need a few seconds to think about it.
+       ###
       outline: "Finance & Wealth"
       message: Lovely choice, I must say! Everyone loves to be wealthy! One second while I create your affirmation.
       ###
       outline: "Relationships & Love"
-      message: I love It! No pun intended. What are we without love and wonderful relationships!
+      message: I love It! No pun intented. What are we without love and wonderful relationships!
       ###
       outline: ${outline}
       message:
-    `,
-    tokens: 60
+      `,
+    tokens: 60 // Pass maxTokens
   });
     
   const response = await fetch(url, {
     method: 'POST',
     headers: {
-      'content-type': 'text/plain',
+      'Content-Type': 'application/json'
+      // 'content-type': 'text/plain',
     },
-    body:requestBody
+    body: requestBody
+    
+    // {
+    //   prompt:`Generate a short message to enthusiastically say the chosen outline 
+    //    is exciting and that you need a few seconds to think about it.
+    //    ###
+    //   outline: "Finance & Wealth"
+    //   message: Lovely choice, I must say! Everyone loves to be wealthy! One second while I create your affirmation.
+    //   ###
+    //   outline: "Relationships & Love"
+    //   message: I love It! No pun intented. What are we without love and wonderful relationships!
+    //   ###
+    //   outline: ${outline}
+    //   message:
+    //   `,
+    // tokens: 60}
   })
   const data = await response.json()
   console.log(data.reply)
-  console.log(body.tokens)
-  console.log(typeof body.tokens)
+  
   setupInputContainer.innerText = data.reply
   affirmBotText.innerText = data.reply.choices[0].text.trim()
   

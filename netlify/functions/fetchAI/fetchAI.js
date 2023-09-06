@@ -6,11 +6,10 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration)
   
 // Parse the JSON string from event.body to an object
-  const handler = async (event) => {
-  const requestBody = JSON.parse(event.body);
+const handler = async (event) => {
     
-  // Access the prompt and tokens values
-    const { prompt, tokens } = requestBody;
+  const requestBody = JSON.parse(event.body);
+  const { prompt, tokens } = requestBody; // Extract prompt and tokens
 
   try {
     const response = await openai.createCompletion({
