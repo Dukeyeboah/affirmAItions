@@ -61,6 +61,8 @@ async function fetchBotReply(outline) {
   })
   const data = await response.json()
   console.log(data.reply)
+  console.log(body.tokens)
+  console.log(typeof body.tokens)
   setupInputContainer.innerText = data.reply
   affirmBotText.innerText = data.reply.choices[0].text.trim()
   

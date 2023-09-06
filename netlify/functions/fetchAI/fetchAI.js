@@ -7,8 +7,7 @@ const openai = new OpenAIApi(configuration)
 
 const handler = async (event) => {
 
-  console.log(event.body.tokens)
-  console.log(typeof event.body.tokens)
+  
   try {
     const response = await openai.createCompletion({
     model: 'text-davinci-003',
