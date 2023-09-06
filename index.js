@@ -45,7 +45,7 @@ async function fetchBotReply(outline) {
     headers: {
       'content-type': 'text/plain',
     },
-    body: {prompt:`Generate a short message to enthusiastically say the chosen outline 
+    body:`Generate a short message to enthusiastically say the chosen outline 
        is exciting and that you need a few seconds to think about it.
        ###
       outline: "Finance & Wealth"
@@ -56,10 +56,10 @@ async function fetchBotReply(outline) {
       ###
       outline: ${outline}
       message:
-      `,
-    max_tokens:60}
+      `
   })
   const data = await response.json()
+  console.log(data.reply)
   setupInputContainer.innerText = data.reply
   affirmBotText.innerText = data.reply.choices[0].text.trim()
   

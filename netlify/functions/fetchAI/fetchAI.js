@@ -9,8 +9,8 @@ const handler = async (event) => {
   try {
     const response = await openai.createCompletion({
     model: 'text-davinci-003',
-    prompt:event.body.prompt,
-    max_tokens: event.body.max_tokens //defaults to 16
+    prompt:event.body,
+    max_tokens: 60 //defaults to 16
   })
 
     return {
