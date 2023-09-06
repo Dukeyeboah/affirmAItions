@@ -28,7 +28,7 @@ document.getElementById("affirmation-form").addEventListener("submit", (event) =
   if (selectedCategory !== "") {
     setupInputContainer.innerHTML = `<img src="images/loading.svg" class="loading" id="loading">`
     affirmBotText.innerText = `Thank you for choosing a category, please wait a second while my AI brain digests your choice...` 
-    // fetchBotReply(selectedCategory)
+    fetchBotReply(selectedCategory)
     fetchAffirmation(selectedCategory)
   }
   else {
@@ -37,53 +37,53 @@ document.getElementById("affirmation-form").addEventListener("submit", (event) =
 })
 
 
-// async function fetchBotReply(outline) {
-//   const url = 'https://affirmaition.netlify.app/.netlify/functions/fetchAI'
+async function fetchBotReply(outline) {
+  const url = 'https://affirmaition.netlify.app/.netlify/functions/fetchAI'
 
-//   const requestBody = JSON.stringify({
-//     prompt: `Generate a short message to enthusiastically say the chosen outline 
-//        is exciting and that you need a few seconds to think about it.
-//        ###
-//       outline: "Finance & Wealth"
-//       message: Lovely choice, I must say! Everyone loves to be wealthy! One second while I create your affirmation.
-//       ###
-//       outline: "Relationships & Love"
-//       message: I love It! No pun intented. What are we without love and wonderful relationships!
-//       ###
-//       outline: ${outline}
-//       message:
-//       `,
-//     tokens: 60 // Pass maxTokens
-//   });
+  const requestBody = JSON.stringify({
+    prompt_given: `Generate a short message to enthusiastically say the chosen outline 
+       is exciting and that you need a few seconds to think about it.
+       ###
+      outline: "Finance & Wealth"
+      message: Lovely choice, I must say! Everyone loves to be wealthy! One second while I create your affirmation.
+      ###
+      outline: "Relationships & Love"
+      message: I love It! No pun intented. What are we without love and wonderful relationships!
+      ###
+      outline: ${outline}
+      message:
+      `,
+    tokens: 60 // Pass maxTokens
+  });
     
-//   const response = await fetch(url, {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json'
-//       // 'content-type': 'text/plain',
-//     },
-//     body: requestBody
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+      // 'content-type': 'text/plain',
+    },
+    body: requestBody
     
-//     // {
-//     //   prompt:`Generate a short message to enthusiastically say the chosen outline 
-//     //    is exciting and that you need a few seconds to think about it.
-//     //    ###
-//     //   outline: "Finance & Wealth"
-//     //   message: Lovely choice, I must say! Everyone loves to be wealthy! One second while I create your affirmation.
-//     //   ###
-//     //   outline: "Relationships & Love"
-//     //   message: I love It! No pun intented. What are we without love and wonderful relationships!
-//     //   ###
-//     //   outline: ${outline}
-//     //   message:
-//     //   `,
-//     // tokens: 60}
-//   })
-//   const data = await response.json()
-//   affirmBotText.innerText = data.reply.choices[0].text.trim()
-//   // affirmBotText.innerText = response.data.choices[0].text.trim()
+    // {
+    //   prompt:`Generate a short message to enthusiastically say the chosen outline 
+    //    is exciting and that you need a few seconds to think about it.
+    //    ###
+    //   outline: "Finance & Wealth"
+    //   message: Lovely choice, I must say! Everyone loves to be wealthy! One second while I create your affirmation.
+    //   ###
+    //   outline: "Relationships & Love"
+    //   message: I love It! No pun intented. What are we without love and wonderful relationships!
+    //   ###
+    //   outline: ${outline}
+    //   message:
+    //   `,
+    // tokens: 60}
+  })
+  const data = await response.json()
+  affirmBotText.innerText = data.reply.choices[0].text.trim()
+  // affirmBotText.innerText = response.data.choices[0].text.trim()
 
-// }
+}
 
 async function fetchAffirmation(outline) {
 
