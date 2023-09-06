@@ -45,7 +45,7 @@ async function fetchBotReply(outline) {
     headers: {
       'content-type': 'text/plain',
     },
-    body:`Generate a short message to enthusiastically say the chosen outline 
+    body:{prompt:`Generate a short message to enthusiastically say the chosen outline 
        is exciting and that you need a few seconds to think about it.
        ###
       outline: "Finance & Wealth"
@@ -56,7 +56,8 @@ async function fetchBotReply(outline) {
       ###
       outline: ${outline}
       message:
-      `
+      `,
+    tokens: 60}
   })
   const data = await response.json()
   console.log(data.reply)
