@@ -53,7 +53,7 @@ function botAffirmationPrompt(outline){
   }   
 }
 
-function displayAffirmation(setupInputContainer,affirmBotText,affirmationForm) {
+function displayAffirmation(setupInputContainer,affirmBotText,affirmationForm,generateSelectOptions) {
   let formElements = affirmationForm.elements;
   setupInputContainer.innerHTML = `<button id="view-affirmation-btn" class="view-affirmation-btn">affirmAItion</button>`
   document.getElementById('view-affirmation-btn').addEventListener('click', () => {
