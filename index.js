@@ -66,6 +66,7 @@ async function fetchAffirmation(outline) {
 
 
 function displayAffirmation() {
+  let formElements = affirmationForm.elements;
   setupInputContainer.innerHTML = `<button id="view-affirmation-btn" class="view-affirmation-btn">affirmAItion</button>`
   document.getElementById('view-affirmation-btn').addEventListener('click', () => {
 
@@ -73,7 +74,6 @@ function displayAffirmation() {
     // document.getElementById("category").style.display = 'none'
     // Disable all form elements within the form
 
-  let formElements = affirmationForm.elements;
   for (let i = 0; i < formElements.length; i++) {
     formElements[i].disabled = true;
   }
