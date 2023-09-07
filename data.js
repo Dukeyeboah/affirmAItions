@@ -34,7 +34,7 @@ function botReplyPrompt(outline) {
 }   
 }
 
-function botAffirmationPrompt(outline) {
+function botAffirmationPrompt(outline){
     return {
     prompt_given: `Generate a clear, concise, enthusiastic, emotional and powerful 
     affirmation in the present tense based on an outline

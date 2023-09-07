@@ -16,7 +16,7 @@ const handler = async (event) => {
     model: 'text-davinci-003',
     prompt:prompt_given,
     max_tokens: tokens //defaults to 16
-  })
+  }) 
 
     return {
       statusCode: 200,
