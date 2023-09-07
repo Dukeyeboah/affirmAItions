@@ -73,7 +73,7 @@ function displayAffirmation() {
     // document.getElementById("category").style.display = 'none'
     // Disable all form elements within the form
 
-  const formElements = affirmationForm.elements;
+  let formElements = affirmationForm.elements;
   for (let i = 0; i < formElements.length; i++) {
     formElements[i].disabled = true;
   }

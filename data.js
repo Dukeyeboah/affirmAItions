@@ -29,7 +29,7 @@ function botReplyPrompt(outline) {
       ###
       outline: ${outline}
       message:
-      `,
+      `, 
     tokens: 60 // Pass maxTokens
 }   
 }
