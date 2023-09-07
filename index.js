@@ -42,14 +42,15 @@ async function fetchBotReply(outline) {
 
   const requestBody = JSON.stringify({
     prompt_given: `Generate a short message to enthusiastically say the chosen outline 
-       is exciting and that you need a few seconds to think about it.
+       is exciting and tell them to clicking the button below to reveal it.
        ###
       outline: "Finance & Wealth"
       message: Finance and Wealth is a splendid choice, I must say! 
-      Everyone loves to be wealthy! One second while I create your affirmation.
+      Everyone loves to be wealthy! Please access your affirmation below.
       ###
       outline: "Relationships & Love"
-      message: I love it! No pun intented. What are we without love and wonderful relationships!
+      message: I love it! No pun intented. What are we without love and wonderful relationships! 
+      I hope you like your affirmation below.
       ###
       outline: ${outline}
       message:
@@ -66,9 +67,9 @@ async function fetchBotReply(outline) {
   })
   const data = await response.json()
 
-   setTimeout(() => {
+  
     affirmBotText.innerText = data.reply.choices[0].text.trim()
-  }, 1000);
+  
   // affirmBotText.innerText = data.reply.choices[0].text.trim()
   // affirmBotText.innerText = response.data.choices[0].text.trim()
 }
@@ -109,7 +110,7 @@ async function fetchAffirmation(outline) {
   
   setTimeout(() => {
   setupInputContainer.innerHTML = `<button id="view-affirmation-btn" class="view-affirmation-btn">View affirmAItion</button>`
-  }, 1000);
+  }, 3000);
 
   //setupInputContainer.innerHTML = `<button id="view-affirmation-btn" class="view-affirmation-btn">View affirmAItion</button>`
   document.getElementById('view-affirmation-btn').addEventListener('click', () => {
