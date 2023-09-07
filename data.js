@@ -1,5 +1,5 @@
 
-export const categoryArr = [
+const categoryArr = [
   { value: "", option: "Choose a category" },
   { value: "Housing & Home", option: "Housing & Home"},
   { value: "Finance & Wealth", option: "Finance & Wealth" },
@@ -13,3 +13,27 @@ export const categoryArr = [
   { value: "Personal Growth & Development", option: "Personal Growth & Development" },
   { value: "Self-confidence & Empowerment", option: "Self-confidence & Empowerment"},      
 ]
+
+function botReplyPrompt(outline) {
+    return {
+    prompt_given: `Generate a short message to enthusiastically say the chosen outline 
+       is exciting. And direct them to click the button below to reveal it.
+       ###
+      outline: "Finance & Wealth"
+      message: Finance and Wealth is a splendid choice, I must say! 
+      Everyone loves to be wealthy! Please access your affirmation below.
+      ###
+      outline: "Relationships & Love"
+      message: I love it! No pun intented. What are we without love and wonderful relationships! 
+      I hope you enjoy your affirmation, and use it daily.
+      ###
+      outline: ${outline}
+      message:
+      `,
+    tokens: 60 // Pass maxTokens
+}
+    
+}
+
+  
+export {categoryArr,botReplyPrompt}
