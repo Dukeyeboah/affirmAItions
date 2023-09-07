@@ -335,12 +335,13 @@ img.loading {
     padding: 1em;
 }
 
-.output-img-container>img {
+
+/*.output-img-container>img {
     width: 100%;
-    /* max-width: 100%; */
+    max-width: 100%;
     border-radius: var(--border-rad-lg);
     box-shadow: 1px 1px 5px 1px var(--dark);
-}
+}*/
 
 /* =================
       Footer 
