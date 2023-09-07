@@ -26,7 +26,12 @@ document.getElementById("affirmation-form").addEventListener("submit", (event) =
   setupInputContainer.style.display = 'flex'
   const selectedCategory = document.getElementById("category").value
   if (selectedCategory !== "") {
-    setupInputContainer.innerHTML = `<img src="images/load.svg" class="loading" id="loading" alt="loading-symbol">`
+    setupInputContainer.innerHTML =
+      
+      `<div> 
+      <p>Loading...</p>
+      <img src="images/load.svg" class="loading" id="loading" alt="loading-symbol">
+      </div>`
     affirmBotText.innerText = `Thank you for picking a category, please allow my AI brain digests your choice...` 
     fetchBotReply(selectedCategory)
     fetchAffirmation(selectedCategory)
@@ -42,7 +47,7 @@ async function fetchBotReply(outline) {
 
   const requestBody = JSON.stringify({
     prompt_given: `Generate a short message to enthusiastically say the chosen outline 
-       is exciting and tell them to clicking the button below to reveal it.
+       is exciting. And direct them to click the button below to reveal it.
        ###
       outline: "Finance & Wealth"
       message: Finance and Wealth is a splendid choice, I must say! 
@@ -50,7 +55,7 @@ async function fetchBotReply(outline) {
       ###
       outline: "Relationships & Love"
       message: I love it! No pun intented. What are we without love and wonderful relationships! 
-      I hope you like your affirmation below.
+      Enjoy your affirmation.
       ###
       outline: ${outline}
       message:
