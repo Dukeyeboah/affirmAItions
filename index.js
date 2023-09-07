@@ -26,8 +26,8 @@ document.getElementById("affirmation-form").addEventListener("submit", (event) =
   setupInputContainer.style.display = 'flex'
   const selectedCategory = document.getElementById("category").value
   if (selectedCategory !== "") {
-    setupInputContainer.innerHTML = `<img src="images/loading.svg" class="loading" id="loading">`
-    affirmBotText.innerText = `Thank you for choosing a category, please wait a second while my AI brain digests your choice...` 
+    setupInputContainer.innerHTML = `<img src="images/load.svg" class="loading" id="loading" alt="loading-symbol">`
+    affirmBotText.innerText = `Thank you for picking a category, please allow my AI brain digests your choice...` 
     fetchBotReply(selectedCategory)
     fetchAffirmation(selectedCategory)
   }
@@ -60,30 +60,17 @@ async function fetchBotReply(outline) {
   const response = await fetch(url, {
     method: 'POST',
     headers: {
-      // 'Content-Type': 'application/json'
-      'content-type': 'text/plain'
+      'content-type': 'text/plain'  // used this earlier - 'Content-Type': 'application/json'
     },
     body: requestBody
-    
-    // {
-    //   prompt:`Generate a short message to enthusiastically say the chosen outline 
-    //    is exciting and that you need a few seconds to think about it.
-    //    ###
-    //   outline: "Finance & Wealth"
-    //   message: Lovely choice, I must say! Everyone loves to be wealthy! One second while I create your affirmation.
-    //   ###
-    //   outline: "Relationships & Love"
-    //   message: I love It! No pun intented. What are we without love and wonderful relationships!
-    //   ###
-    //   outline: ${outline}
-    //   message:
-    //   `,
-    // tokens: 60}
   })
   const data = await response.json()
-  affirmBotText.innerText = data.reply.choices[0].text.trim()
-  // affirmBotText.innerText = response.data.choices[0].text.trim()
 
+   setTimeout(() => {
+    affirmBotText.innerText = data.reply.choices[0].text.trim()
+  }, 1000);
+  // affirmBotText.innerText = data.reply.choices[0].text.trim()
+  // affirmBotText.innerText = response.data.choices[0].text.trim()
 }
 
 async function fetchAffirmation(outline) {
@@ -115,16 +102,20 @@ async function fetchAffirmation(outline) {
     body:requestBody
   })
   const data = await response.json()
-  console.log(data.reply.choices[0])
+ 
   const affirmation = data.reply.choices[0].text.trim()
 
   document.getElementById('output-text').innerText = affirmation
-
+  
+  setTimeout(() => {
   setupInputContainer.innerHTML = `<button id="view-affirmation-btn" class="view-affirmation-btn">View affirmAItion</button>`
+  }, 1000);
+
+  //setupInputContainer.innerHTML = `<button id="view-affirmation-btn" class="view-affirmation-btn">View affirmAItion</button>`
   document.getElementById('view-affirmation-btn').addEventListener('click', () => {
-    document.getElementById("affirmation-form").style.display = 'none'
-    setupInputContainer.style.display = 'none'
-    document.getElementById('output-container').style.display = 'flex'
+    document.getElementById("affirmation-form").style.display = 'none' //remove dropdown
+    setupInputContainer.style.display = 'none' //remove loading section
+    document.getElementById('output-container').style.display = 'flex' //disaply container for affirmation mssg
     // affirmBotText.innerText = `Repeat this with elevated emotion belief that it's already done, and watch it manifest in your life.`
   })
 
@@ -133,8 +124,8 @@ async function fetchAffirmation(outline) {
   document.getElementById('setup-container').style.display = 'flex'
   affirmBotText.innerText = `Ready to go again? Select another category of your life you want to improve
   and I'll give you the perfect affirmation to manifest it!`
-  generateSelectOptions()
-  document.getElementById("affirmation-form").style.display = 'flex'
+  generateSelectOptions() //re-generates select box
+  document.getElementById("affirmation-form").style.display = 'flex' //displays select box
   })
   // fetchTitle(affirmation)
 }
