@@ -1,4 +1,3 @@
-
 const categoryArr = [
   { value: "", option: "Choose a category" },
   { value: "Housing & Home", option: "Housing & Home"},
@@ -78,6 +77,5 @@ function displayAffirmation(setupInputContainer,affirmBotText,affirmationForm,ge
   document.getElementById("affirmation-form").style.display = 'flex' //displays select box
   })
 }
-
-  
+ 
 export {categoryArr,botReplyPrompt,botAffirmationPrompt,displayAffirmation}

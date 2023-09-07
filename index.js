@@ -19,7 +19,8 @@ document.getElementById("affirmation-form").addEventListener("submit", (event) =
     fetchAffirmation(selectedCategory)
   }
   else {
-    affirmBotText.innerText = `Please Select a category, so I can help you manifest your desires with the right affirmation`
+    affirmBotText.innerText = `Please Select a category, so I can help you 
+                              manifest your desires with the right affirmation`
   }
 })
 
@@ -37,7 +38,7 @@ async function fetchBotReply(outline) {
   const response = await fetch(url, {
     method: 'POST',
     headers: {
-      'Content-Type': 'text/plain'  // used this earlier - 'Content-Type': 'application/json'
+      'Content-Type': 'text/plain'  // used earlier - 'Content-Type': 'application/json'
     },
     body: requestBody
   })
