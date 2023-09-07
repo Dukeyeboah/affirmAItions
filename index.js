@@ -1,4 +1,4 @@
-import {categoryArr,botReplyPrompt,botAffirmationPrompt} from './data'
+import {categoryArr,botReplyPrompt,botAffirmationPrompt,displayAffirmation} from './data'
 
 const setupInputContainer = document.getElementById('setup-input-container')
 const affirmBotText = document.getElementById('affirm-bot-text')
@@ -44,7 +44,6 @@ async function fetchBotReply(outline) {
   })
   const data = await response.json()
   affirmBotText.innerText = data.reply.choices[0].text.trim()
-  // affirmBotText.innerText = response.data.choices[0].text.trim()
 }
 
 async function fetchAffirmation(outline) {
@@ -61,40 +60,32 @@ async function fetchAffirmation(outline) {
   const data = await response.json()
   const affirmation = data.reply.choices[0].text.trim()
   document.getElementById('output-text').innerText = affirmation
-  displayAffirmation()
+  displayAffirmation(setupInputContainer,affirmBotText,affirmationForm)
 }
 
 
-function displayAffirmation() {
-  let formElements = affirmationForm.elements;
-  setupInputContainer.innerHTML = `<button id="view-affirmation-btn" class="view-affirmation-btn">affirmAItion</button>`
-  document.getElementById('view-affirmation-btn').addEventListener('click', () => {
+// function displayAffirmation(setupInputContainer,affirmBotText,affirmationForm) {
+//   let formElements = affirmationForm.elements;
+//   setupInputContainer.innerHTML = `<button id="view-affirmation-btn" class="view-affirmation-btn">affirmAItion</button>`
+//   document.getElementById('view-affirmation-btn').addEventListener('click', () => {
+//   // Disable all form elements within the form
+//   for (let i = 0; i < formElements.length; i++) {
+//     formElements[i].disabled = true;
+//   }
+//     setupInputContainer.innerHTML = ""
+//     document.getElementById('output-container').style.display = 'flex' //display affirmation mssg container
+//     affirmBotText.innerText = `Repeat this affirmation with elevated joyful emotion in your body, 
+//                               and strong belief that it's already done, and watch it manifest in your life.`
+//   })
 
-    //document.getElementById("affirmation-form").style.display = 'none' //remove dropdown
-    // document.getElementById("category").style.display = 'none'
-    // Disable all form elements within the form
-
-  for (let i = 0; i < formElements.length; i++) {
-    formElements[i].disabled = true;
-  }
-    // document.getElementById("category").disabled = true
-    setupInputContainer.innerHTML = ""
-    //setupInputContainer.style.display = 'none' //remove loading section
-    document.getElementById('output-container').style.display = 'flex' //display affirmation mssg container
-    affirmBotText.innerText = `Repeat this affirmation with joyful emotion and strong belief 
-                              that it's already done, and watch it manifest in your life.`
-  })
-
-  document.getElementById('back-to-start-btn').addEventListener('click', () => {
-  for (let i = 0; i < formElements.length; i++) {
-    formElements[i].disabled = false;
-  }
-    // document.getElementById("category").disabled = false
-  document.getElementById('output-container').style.display = 'none'
-  // document.getElementById('setup-container').style.display = 'flex'
-  affirmBotText.innerText = `Ready to go again? Select another category of your life you want to improve
-  and I'll give you the perfect affirmation to manifest it!`
-  generateSelectOptions() //re-generates select box
-  document.getElementById("affirmation-form").style.display = 'flex' //displays select box
-  })
-}
+//   document.getElementById('back-to-start-btn').addEventListener('click', () => {
+//   for (let i = 0; i < formElements.length; i++) {
+//     formElements[i].disabled = false;
+//   }
+//   document.getElementById('output-container').style.display = 'none'
+//   affirmBotText.innerText = `Ready to go again? Select another category of your life you want to improve
+//   and I'll give you the perfect affirmation to manifest it!`
+//   generateSelectOptions() //re-generates select box
+//   document.getElementById("affirmation-form").style.display = 'flex' //displays select box
+//   })
+// }
