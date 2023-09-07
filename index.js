@@ -1,4 +1,4 @@
-import {categoryArr, botReplyPrompt} from './data'
+import {categoryArr,botReplyPrompt} from './data'
 
 const setupInputContainer = document.getElementById('setup-input-container')
 const affirmBotText = document.getElementById('affirm-bot-text')

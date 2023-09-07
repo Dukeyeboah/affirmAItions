@@ -17,15 +17,15 @@ const categoryArr = [
 function botReplyPrompt(outline) {
     return {
     prompt_given: `Generate a short message to enthusiastically say the chosen outline 
-       is exciting. And direct them to click the button below to reveal it.
+       is exciting. Direct them to view affirmation below, and use it with confidence and joy.
        ###
       outline: "Finance & Wealth"
       message: Finance and Wealth is a splendid choice, I must say! 
-      Everyone loves to be wealthy! Please access your affirmation below.
+      Everyone loves to be wealthy! See your affirmation below. Remeber to speak it with joyful emotion.
       ###
       outline: "Relationships & Love"
       message: I love it! No pun intented. What are we without love and wonderful relationships! 
-      I hope you enjoy your affirmation, and use it daily.
+      I hope you enjoy your affirmation, and speak it daily with conviction and belief.
       ###
       outline: ${outline}
       message:
