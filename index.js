@@ -65,9 +65,9 @@ async function fetchAffirmation(outline) {
 
 
 function displayAffirmation() {
-  setupInputContainer.innerHTML = `<button id="view-affirmation-btn" class="view-affirmation-btn">View affirmAItion</button>`
+  setupInputContainer.innerHTML = `<button id="view-affirmation-btn" class="view-affirmation-btn">affirmAItion</button>`
   document.getElementById('view-affirmation-btn').addEventListener('click', () => {
-    document.getElementById("affirmation-form").style.display = 'none' //remove dropdown
+    //document.getElementById("affirmation-form").style.display = 'none' //remove dropdown
     setupInputContainer.style.display = 'none' //remove loading section
     document.getElementById('output-container').style.display = 'flex' //display affirmation mssg container
     affirmBotText.innerText = `Repeat this affirmation with joyful emotion and strong belief 
