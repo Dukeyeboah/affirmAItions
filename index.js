@@ -68,13 +68,17 @@ function displayAffirmation() {
   setupInputContainer.innerHTML = `<button id="view-affirmation-btn" class="view-affirmation-btn">affirmAItion</button>`
   document.getElementById('view-affirmation-btn').addEventListener('click', () => {
     //document.getElementById("affirmation-form").style.display = 'none' //remove dropdown
-    setupInputContainer.style.display = 'none' //remove loading section
+    // document.getElementById("category").style.display = 'none'
+    document.getElementById("category").disabled = true
+    setupInputContainer.innerHTML = ""
+    //setupInputContainer.style.display = 'none' //remove loading section
     document.getElementById('output-container').style.display = 'flex' //display affirmation mssg container
     affirmBotText.innerText = `Repeat this affirmation with joyful emotion and strong belief 
                               that it's already done, and watch it manifest in your life.`
   })
 
   document.getElementById('back-to-start-btn').addEventListener('click', () => {
+  document.getElementById("category").disabled = false
   document.getElementById('output-container').style.display = 'none'
   // document.getElementById('setup-container').style.display = 'flex'
   affirmBotText.innerText = `Ready to go again? Select another category of your life you want to improve
