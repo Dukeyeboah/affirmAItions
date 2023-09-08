@@ -73,7 +73,6 @@ function displayAffirmation(setupInputContainer,affirmBotText,affirmationForm,ge
   document.getElementById('output-container').style.display = 'none'
   affirmBotText.innerText = `Ready to go again? Select another category of your life you want to improve
   and I'll give you the perfect affirmation to manifest it!`
-  generateSelectOptions() //re-generates select box
   document.getElementById("affirmation-form").style.display = 'flex' //displays select box
   })
 }
