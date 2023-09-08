@@ -12,7 +12,7 @@ document.getElementById("affirmation-form").addEventListener("submit", (event) =
   setupInputContainer.style.display = 'flex'
   const selectedCategory = document.getElementById("category").value
   if (selectedCategory !== "") {
-    setupInputContainer.innerHTML = `<p> Processing...</p>` `<img src="images/load.svg" class="loading" id="loading" alt="loading-symbol">`//not working in browser
+    setupInputContainer.innerHTML = `<img src="images/load.svg" class="loading" id="loading" alt="loading-symbol">`//not working in browser `<p> Processing...</p>` 
       
     affirmBotText.innerText = `Thank you for picking a category, please allow my AI brain digests your choice...` 
     fetchBotReply(selectedCategory)
