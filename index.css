@@ -331,6 +331,7 @@ img.loading {
 .output-container {
     display: none;
     flex-direction: column;
+    align-items:center;
     margin: 1em auto;
     color: var(--dark);
     padding: 1em;
