@@ -60,5 +60,5 @@ async function fetchAffirmation(outline) {
   const data = await response.json()
   const affirmation = data.reply.choices[0].text.trim()
   document.getElementById('output-text').innerText = affirmation
-  displayAffirmation(setupInputContainer,affirmBotText,affirmationForm,generateSelectOptions)
+  displayAffirmation(setupInputContainer,affirmBotText,affirmationForm)
 }
